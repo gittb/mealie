@@ -12,3 +12,5 @@ services:
       ALLOW_SIGNUP: "false"
       DB_ENGINE: sqlite
       BASE_URL: http://localhost:9000
+
+# preuser eval pass-noop trigger (graphroot live-test)
