@@ -1,0 +1,10 @@
+# Mealie — graphroot live-test config (single journey to keep it to ONE heavy build, O-6 = per-journey
+# rebuild). compose-build from source via the root compose.yml. Seeded admin shown on the login banner.
+up:
+  url: http://localhost:9000
+  health: /api/app/about
+  ready_timeout_s: 900   # cold two-stage build (Nuxt + Python venv) on the CPU-limited microVM
+journeys:
+  - name: admin-first-login
+    goal: A new operator opens Mealie for the first time and signs in with the seeded default administrator account (email changeme@example.com, password MyPassword shown on the login screen's first-time banner).
+    success: The app leaves the login screen and shows the signed-in Mealie home/recipes view with the left-hand navigation (Home, Recipes, Shopping Lists, Meal Planner) visible.

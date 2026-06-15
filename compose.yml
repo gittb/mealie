@@ -1,0 +1,14 @@
+# Root compose for the preuser eval — builds Mealie from source (resolves compose-path: Mealie's own
+# compose lives in docker/). Single-service SQLite, production target. Fresh state per run (no volume).
+services:
+  mealie:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      target: production
+    ports:
+      - "9000:9000"   # publish the API to the pod's 0.0.0.0:9000 (up.url's port)
+    environment:
+      ALLOW_SIGNUP: "false"
+      DB_ENGINE: sqlite
+      BASE_URL: http://localhost:9000
